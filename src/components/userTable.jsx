@@ -3,7 +3,7 @@ import { HiEnvelope } from "react-icons/hi2";
 import { BiTrash } from 'react-icons/bi';
 import { AiOutlineEdit } from 'react-icons/ai';
 
-export default function TableUsers({ users }) {
+export default function TableUsers({ users, onDelete, onEdit }) {
   return (
     <div className="bg-black rounded-2xl p-4 sm:p-6 max-w-6xl mx-auto shadow-lg mb-6 mt-4 overflow-x-auto border border-gray-800">
       <table className="min-w-[700px] w-full text-xs md:text-sm text-left table-fixed rounded-lg">
@@ -25,14 +25,14 @@ export default function TableUsers({ users }) {
               <td className="py-4 px-2">
                 <div className="flex items-center gap-2 flex-wrap">
                   {user.email}
-                  <HiEnvelope title="Correo" className="text-lg" />
+                  <HiEnvelope title="Correo" className="text-md" />
                 </div>
               </td>
               <td className="py-4 px-2 flex justify-center gap-4">
-                <button className="text-red-500 hover:scale-110 transition-transform" title="Eliminar">
+                <button onClick={() => onDelete(user.id)} className="text-red-500 hover:scale-115 transition-transform" title="Eliminar">
                   <BiTrash size={18} />
                 </button>
-                <button className="text-blue-600 hover:scale-110 transition-transform" title="Editar">
+                <button onClick={() => onEdit(user)} className="text-blue-600 hover:scale-120 transition-transform" title="Editar">
                   <AiOutlineEdit size={18} />
                 </button>
               </td>
