@@ -1,7 +1,11 @@
-import React from 'react'
 
-export default function posts() {
+import PostsList from '../components/postsList';
+
+export default function Posts() {
+  
   return (
-    <div>posts</div>
-  )
+    <>
+      <PostsList />
+    </>
+  );
 }
