@@ -2,26 +2,33 @@ import { useEffect, useState } from 'react';
 import useStore from '../store/useUserStore';
 import UserTable from '../components/userTable';
 import { HiOutlineSearch } from "react-icons/hi";
+import ModalDelete from '../components/modalDelete';
+import ModalEdit from '../components/modalEdit';
 export default function Users() {
-  const { Users, fetchUsers, removeUser, editUser } = useStore();
+  const { Users, fetchUsers, deleteUser, editUser } = useStore();
   const [search, setSearch] = useState('');
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState({});
   useEffect(() => {
     fetchUsers();
   }, []);
   const handleDelete = (id) => {
-    removeUser(id);
+    deleteUser(id);
+    setShowDeleteModal(false);
   };
-  const handleEdit = (user) => {
-    const updated = {
-      ...user,
-      name: prompt("Nuevo nombre:", user.name) || user.name,
-      email: prompt("Nuevo email:", user.email) || user.email,
-    };
-    editUser(user.id, updated);
+  const handleEdit = (updatedUser) => {
+    if (!updatedUser.id) return;
+    editUser(updatedUser.id, updatedUser);
+    setShowEditModal(false);
   };
-  const filteredUsers = Users.filter(user =>
-    user.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredUsers = (() => {
+    if (!search.trim()) return Users;
+    const results = Users.filter(user =>
+      user.name.toLowerCase().includes(search.toLowerCase())
+    );
+    return results.length > 0 ? results : Users;
+  })();
   return (
     <div className="px-2 sm:px-6 md:px-8">
     <div className="max-w-md mx-auto">
@@ -36,7 +43,29 @@ export default function Users() {
         />
       </div>
     </div>
-    <UserTable users={filteredUsers} onDelete={handleDelete} onEdit={handleEdit} />
+    <UserTable
+        users={filteredUsers}
+        onDelete={(user) => {
+          setSelectedUser(user);
+          setShowDeleteModal(true);
+        }}
+        onEdit={(user) => {
+          setSelectedUser(user);
+          setShowEditModal(true);
+        }}
+    />
+    <ModalDelete
+        isOpen={showDeleteModal}
+        onClose={() => setShowDeleteModal(false)}
+        onConfirm={handleDelete}
+        user={selectedUser}
+    />
+    <ModalEdit
+        isOpen={showEditModal}
+        onClose={() => setShowEditModal(false)}
+        onConfirm={handleEdit}
+        user={selectedUser}
+      />
   </div>
   )
 }

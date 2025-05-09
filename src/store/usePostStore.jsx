@@ -7,10 +7,16 @@ const usePostStore = create((set)=>({
         const res = await axios.get('https://jsonplaceholder.typicode.com/posts');
         set({ posts: res.data });
     },
-    addPost: (newPost) => {
-        set((state) => ({
-          posts: [newPost, ...state.posts],
-        }));
-    },
+    addPost: (newPost) => 
+        set((state) =>({
+            posts:[
+                {
+                    ...newPost,
+                    id: state.posts.length + 1,
+                    userId: 1,
+                },
+                ...state.posts,
+            ],
+        })),
 }))
 export default usePostStore;

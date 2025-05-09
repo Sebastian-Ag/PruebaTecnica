@@ -5,7 +5,7 @@ import { AiOutlineEdit } from 'react-icons/ai';
 
 export default function TableUsers({ users, onDelete, onEdit }) {
   return (
-    <div className="bg-black rounded-2xl p-4 sm:p-6 max-w-6xl mx-auto shadow-lg mb-6 mt-3 overflow-x-auto border border-gray-800">
+    <div className="bg-black rounded-2xl p-4 sm:p-6 max-w-6xl mx-auto shadow-lg mt-3 overflow-x-auto border border-gray-800">
       <table className="min-w-[700px] w-full text-xs md:text-sm text-left table-fixed rounded-lg">
         <thead>
           <tr className="text-gray-300 text-[11px] md:text-xs uppercase border-b border-gray-700">
@@ -29,7 +29,7 @@ export default function TableUsers({ users, onDelete, onEdit }) {
                 </div>
               </td>
               <td className="py-4 px-2 flex justify-center gap-4">
-                <button onClick={() => onDelete(user.id)} className="text-red-500 hover:scale-115 transition-transform" title="Eliminar">
+                <button onClick={() => onDelete(user)} className="text-red-500 hover:scale-115 transition-transform" title="Eliminar">
                   <BiTrash size={18} />
                 </button>
                 <button onClick={() => onEdit(user)} className="text-blue-600 hover:scale-120 transition-transform" title="Editar">

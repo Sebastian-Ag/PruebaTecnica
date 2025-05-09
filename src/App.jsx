@@ -9,7 +9,7 @@ function App() {
  
 
   return (
-    <div className='bg-gray-900 h-full'>
+    <div className='bg-gradient-to-b from-gray-900 to-gray-800 min-h-screen pb-4 pl-5 pr-5'>
       <BrowserRouter>
       <Navbar/>
       <Routes>  

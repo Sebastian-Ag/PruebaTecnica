@@ -11,7 +11,7 @@ const Albumes = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-3xl font-bold mb-4 ml-4">Álbumes</h2>
+      <h2 className="text-3xl font-bold mb-2 ml-4 text-white">Álbumes</h2>
       <AlbumList />
       {selectedAlbumId && (
         <PhotoModal photos={photos} onClose={clearSelectedAlbum} />
