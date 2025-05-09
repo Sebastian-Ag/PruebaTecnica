@@ -3,6 +3,7 @@ import PostsList from '../components/postsList';
 import UsePostStore from '../store/usePostStore';
 import UseUserStore from '../store/useUserStore';
 import { HiOutlineSearch } from "react-icons/hi";
+import SearchBar from '../components/searchBar';
 
 export default function Posts() {
   const { posts, fetchPosts } = UsePostStore();
@@ -52,20 +53,13 @@ export default function Posts() {
   return (
     <>
       <div className="px-2 sm:px-6 md:px-8">
-          <div className="max-w-md mx-auto">
-            <div className="relative mb-0">
-              <HiOutlineSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Buscar por nombre"
-                className="w-full pl-10 pr-3 py-2 rounded-2xl border border-gray-700 bg-black text-white placeholder-gray-400"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>          
-          </div>
-          <PostsList posts={filteredPosts}/>
-        </div>
+      <SearchBar
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Buscar por nombre"
+      />
+      <PostsList posts={filteredPosts} />
+    </div>
       
     </>
   );

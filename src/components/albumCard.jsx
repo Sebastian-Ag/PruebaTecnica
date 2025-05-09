@@ -7,7 +7,7 @@ const AlbumCard = ({ album }) => {
     const { fetchPhotos } = UseAlbumStore();
   return (
     <div
-      className="bg-gradient-to-br from-white via-gray-200 to-purple-100 shadow-md hover:shadow-xl rounded-xl p-5 flex flex-col items-center justify-center border-l-5  border-purple-950 group cursor-pointer min-h-[200px] transition-all transform hover:scale-105"
+      className="bg-gradient-to-br from-white via-gray-200 to-purple-100 shadow-md hover:shadow-xl rounded-xl p-5 flex flex-col items-center justify-center border-l-5  border-purple-800 group cursor-pointer min-h-[200px] transition-all transform hover:scale-105"
       onClick={() => fetchPhotos(album.id)}
     >
       <img

@@ -19,7 +19,7 @@ export default function PostForm() {
     <>
         <button
             onClick={() => setIsOpen(true)}
-            className="bg-black hover:bg-violet-950 text-white font-bold py-2 px-4 rounded-lg transition cursor-pointer mb-2"
+            className="bg-gray-800 hover:bg-gray-950 text-white font-bold py-2 px-4 rounded-lg transition cursor-pointer mb-2 border border-gray-700"
         >
         + Añadir
       </button>
@@ -51,7 +51,7 @@ export default function PostForm() {
                     placeholder="Contenido"
                 />
             </div>
-            <div className="flex justify-end gap-2 mt-4">
+            <div className="flex justify-center gap-2 mt-4">
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
@@ -61,7 +61,7 @@ export default function PostForm() {
               </button>
               <button
                 type="submit"
-                className="bg-black hover:bg-violet-950 text-white px-4 py-2 rounded-md"
+                className="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-md"
               >
                 Guardar
               </button>

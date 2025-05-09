@@ -5,19 +5,19 @@ import { AiOutlineEdit } from 'react-icons/ai';
 
 export default function TableUsers({ users, onDelete, onEdit }) {
   return (
-    <div className="bg-black rounded-2xl p-4 sm:p-6 max-w-6xl mx-auto shadow-lg mt-3 overflow-x-auto border border-gray-800">
+    <div className="bg-gray-800 rounded-2xl p-4 sm:p-6 max-w-6xl mx-auto shadow-lg mt-3 overflow-x-auto border border-gray-800">
       <table className="min-w-[700px] w-full text-xs md:text-sm text-left table-fixed rounded-lg">
         <thead>
-          <tr className="text-gray-300 text-[11px] md:text-xs uppercase border-b border-gray-700">
+          <tr className="text-gray-300 text-[11px] md:text-xs uppercase border-b border-gray-600">
             <th className="py-2 px-2">Nombre</th>
             <th className="py-2 px-2 hidden md:table-cell">Empresa</th>
             <th className="py-2 px-2">Correo Electrónico</th>
             <th className="py-2 px-2 text-center">Acción</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-gray-800">
+        <tbody className="divide-y divide-gray-700">
           {users.map((user) => (
-            <tr key={user.id} className="group hover:bg-violet-950 transition-all text-gray-200">
+            <tr key={user.id} className="group hover:bg-gray-900 transition-all text-gray-200">
               <td className="py-4 px-2 font-semibold group-hover:text-white whitespace-nowrap">
                 {user.name}
               </td>
